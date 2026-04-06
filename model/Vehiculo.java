@@ -1,4 +1,4 @@
-package autocar.model;
+package model;
 
 /**
  * Clase base abstracta que representa un vehículo en la flota de AutoCar.

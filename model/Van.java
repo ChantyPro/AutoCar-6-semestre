@@ -1,4 +1,4 @@
-package autocar.model;
+package model;
 
 /**
  * Vehículo tipo Van (minivan, furgoneta de pasajeros).

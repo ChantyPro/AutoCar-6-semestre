@@ -1,6 +1,6 @@
-package autocar.builder;
+package builder;
 
-import autocar.model.Vehiculo;
+import model.Vehiculo;
 import java.util.ArrayList;
 import java.util.List;
 

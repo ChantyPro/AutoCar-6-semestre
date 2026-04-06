@@ -1,4 +1,4 @@
-package autocar.model;
+package model;
 
 /**
  * Vehículo tipo Camión Ligero.

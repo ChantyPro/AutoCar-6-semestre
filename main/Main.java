@@ -1,11 +1,9 @@
-package autocar.main;
+package main;
 
-import autocar.builder.ContratoAlquiler;
-import autocar.inventory.Inventario;
-import autocar.model.Auto;
-import autocar.model.Camion;
-import autocar.model.Van;
-import autocar.model.Vehiculo;
+import builder.ContratoAlquiler;
+import factory.VehiculoFactory;
+import inventory.Inventario;
+import model.Vehiculo;
 import java.util.Scanner;
 
 /**
@@ -28,12 +26,12 @@ public class Main {
 
         Inventario inventario = new Inventario();
 
-        inventario.agregar(new Auto   ("ABC-123", "Toyota",  "Corolla EV",   2023, 430, "electrico",  4));
-        inventario.agregar(new Auto   ("DEF-456", "Nissan",  "Leaf",         2022, 385, "electrico",  4));
-        inventario.agregar(new Van    ("GHI-789", "Honda",   "Odyssey H",    2023, 500, "hibrido",    8));
-        inventario.agregar(new Van    ("JKL-012", "Hyundai", "Staria EV",    2024, 450, "electrico",  7));
-        inventario.agregar(new Camion ("MNO-345", "Ford",    "E-Transit",    2023, 317, "electrico",  1.5));
-        inventario.agregar(new Camion ("PQR-678", "Renault", "Master E-Tech",2022, 200, "electrico",  1.2));
+        inventario.agregar(VehiculoFactory.crearVehiculo("auto",   "ABC-123", "Toyota",  "Corolla EV",   2023, 430, "electrico",  4));
+        inventario.agregar(VehiculoFactory.crearVehiculo("auto",   "DEF-456", "Nissan",  "Leaf",         2022, 385, "electrico",  4));
+        inventario.agregar(VehiculoFactory.crearVehiculo("van",    "GHI-789", "Honda",   "Odyssey H",    2023, 500, "hibrido",    8));
+        inventario.agregar(VehiculoFactory.crearVehiculo("van",    "JKL-012", "Hyundai", "Staria EV",    2024, 450, "electrico",  7));
+        inventario.agregar(VehiculoFactory.crearVehiculo("camion", "MNO-345", "Ford",    "E-Transit",    2023, 317, "electrico",  1.5));
+        inventario.agregar(VehiculoFactory.crearVehiculo("camion", "PQR-678", "Renault", "Master E-Tech",2022, 200, "electrico",  1.2));
 
         System.out.println("Inventario inicial:");
         inventario.listar();
@@ -255,15 +253,15 @@ public class Main {
         switch (tipo) {
             case "auto":
                 int puertas = leerEnteroMinimo(scanner, "Número de puertas: ", 1);
-                vehiculo = new Auto(placa, marca, modelo, anio, autonomia, tipoEnergia, puertas);
+                vehiculo = VehiculoFactory.crearVehiculo(tipo, placa, marca, modelo, anio, autonomia, tipoEnergia, puertas);
                 break;
             case "van":
                 int pasajeros = leerEnteroMinimo(scanner, "Capacidad de pasajeros: ", 1);
-                vehiculo = new Van(placa, marca, modelo, anio, autonomia, tipoEnergia, pasajeros);
+                vehiculo = VehiculoFactory.crearVehiculo(tipo, placa, marca, modelo, anio, autonomia, tipoEnergia, pasajeros);
                 break;
             default:
                 double carga = leerDoubleMinimo(scanner, "Capacidad de carga en toneladas: ", 0.1);
-                vehiculo = new Camion(placa, marca, modelo, anio, autonomia, tipoEnergia, carga);
+                vehiculo = VehiculoFactory.crearVehiculo(tipo, placa, marca, modelo, anio, autonomia, tipoEnergia, carga);
         }
 
         inventario.agregar(vehiculo);

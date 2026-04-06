@@ -1,16 +1,15 @@
-package autocar.inventory;
+package inventory;
 
-import autocar.model.Vehiculo;
+import model.Vehiculo;
 
 /**
  * Inventario de vehículos de AutoCar.
  *
  * DECISIÓN DE DISEÑO – Escenario 1:
- * Se optó por NO usar Factory Method ni Prototype como único patrón del inventario.
- * El inventario en sí es responsable de almacenar, buscar y ordenar; la creación
- * de vehículos se delega al código cliente (main), que puede instanciar directamente
- * o usar un Factory si el sistema crece. Esto mantiene las responsabilidades separadas
- * (Single Responsibility Principle).
+ * Se implementó Factory Method para la creación de vehículos, centralizando la lógica
+ * de instanciación en VehiculoFactory. El inventario se enfoca en almacenar, buscar
+ * y ordenar; la creación se delega a la fábrica. Esto mantiene las responsabilidades
+ * separadas (Single Responsibility Principle) y facilita la extensibilidad.
  *
  * Estructura interna: array de objetos de tamaño fijo (MAX_VEHICULOS).
  * Operaciones implementadas:
